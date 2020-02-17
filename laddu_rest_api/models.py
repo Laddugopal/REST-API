@@ -24,13 +24,13 @@ class UserProfileManager(BaseUserManager):
         
         return user
     
-    def super_user(self, email, name, password):
+    def create_superuser(self, email, name, password):
         ''' 
             Create a user and save it as a super user
         
         '''
         
-        user = self.create_user(self, email, name, password)
+        user = self.create_user(email, name, password)
         user.is_superuser = True
         user.is_staff = True
         user.save(using=self.db)
