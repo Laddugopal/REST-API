@@ -2,6 +2,7 @@ from django.shortcuts import render
 from rest_framework.views import APIView
 from rest_framework.response import Response
 from rest_framework import status
+from rest_framework import viewsets
 
 from laddu_rest_api import serializers
 
@@ -53,3 +54,15 @@ class HelloApiView(APIView):
     def delete(self, request, pk=None):
         """Delete an object"""
         return Response({'method': 'DELETE'})
+
+
+class HelloViewSet(viewsets.ViewSet):
+    ''' test hello view set'''
+    def list(self, request):
+        ''' Thi will return a sample view message'''
+        a_viewset = [
+            "Sample view set for user action (list create restrict update destroy )",
+            "Hare Krishna Hare Krishna",
+            
+        ]
+        return Response({'message': 'Hare Krishna Hare Ram',"a_viewset":a_viewset})
