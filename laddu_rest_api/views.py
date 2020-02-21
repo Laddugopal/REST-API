@@ -5,6 +5,7 @@ from rest_framework import status
 from rest_framework import viewsets
 
 from laddu_rest_api import serializers
+from laddu_rest_api import models
 
 # Create your views here.
 
@@ -96,4 +97,8 @@ class HelloViewSet(viewsets.ViewSet):
         ''' handle removing of the item'''
         return Response({'http_method': 'DELETE'})
             
-    
+class UserProfileViewSet(viewsets.ModelViewSet):
+    ''' Develop the prodfile view set using viewsets'''
+    serializer_class = serializers.UserProfileSerializer
+    queryset = models.UserProfile.objects.all()
+        
